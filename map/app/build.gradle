@@ -1,5 +1,10 @@
 apply plugin: 'com.android.application'
 
+//키숨기기
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+def googleMapApiKey = properties.getProperty('google.map.key')
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.1"
@@ -13,7 +18,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        manifestPlaceholders = [googleMapApiKey:"AIzaSyCQRRU8IoUHM1S1HGgTTL3NZTQBoYjP75c"]
+        manifestPlaceholders = [googleMapApiKey:googleMapApiKey]
     }
 
     buildTypes {
